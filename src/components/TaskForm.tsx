@@ -34,7 +34,7 @@ export function TaskForm() {
           onChange={(e) => setTitle(e.target.value)}
           onFocus={() => setExpanded(true)}
           placeholder="Add a task…"
-          className="flex-1 bg-transparent outline-none text-gray-900 dark:text-gray-100 placeholder-gray-400 text-sm"
+          className="flex-1 bg-transparent outline-none text-gray-900 dark:text-gray-100 placeholder-gray-400 text-base"
         />
         <button
           type="submit"
@@ -52,7 +52,7 @@ export function TaskForm() {
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Description (optional)"
             rows={2}
-            className="w-full bg-gray-50 dark:bg-gray-700 rounded-lg px-3 py-2 text-sm text-gray-800 dark:text-gray-200 placeholder-gray-400 outline-none resize-none"
+            className="w-full bg-gray-50 dark:bg-gray-700 rounded-lg px-3 py-2 text-base text-gray-800 dark:text-gray-200 placeholder-gray-400 outline-none resize-none"
           />
           <div className="flex gap-2 flex-wrap">
             <label className="flex flex-col gap-0.5 text-xs text-gray-500 dark:text-gray-400">
@@ -61,7 +61,7 @@ export function TaskForm() {
                 type="datetime-local"
                 value={dueDate}
                 onChange={(e) => setDueDate(e.target.value)}
-                className="bg-gray-50 dark:bg-gray-700 rounded-lg px-2 py-1.5 text-gray-800 dark:text-gray-200 outline-none text-xs"
+                className="bg-gray-50 dark:bg-gray-700 rounded-lg px-2 py-1.5 text-gray-800 dark:text-gray-200 outline-none text-base"
               />
             </label>
             <label className="flex flex-col gap-0.5 text-xs text-gray-500 dark:text-gray-400">
@@ -70,7 +70,7 @@ export function TaskForm() {
                 type="datetime-local"
                 value={reminderAt}
                 onChange={(e) => setReminderAt(e.target.value)}
-                className="bg-gray-50 dark:bg-gray-700 rounded-lg px-2 py-1.5 text-gray-800 dark:text-gray-200 outline-none text-xs"
+                className="bg-gray-50 dark:bg-gray-700 rounded-lg px-2 py-1.5 text-gray-800 dark:text-gray-200 outline-none text-base"
               />
             </label>
           </div>

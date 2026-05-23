@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+/* Prevent iOS auto-zoom on input focus (triggers when font-size < 16px) */
+@layer base {
+  input, textarea, select {
+    font-size: 1rem;
+  }
+}

@@ -46,7 +46,7 @@ export function TaskItem({ task }: Props) {
             onChange={(e) => setEditTitle(e.target.value)}
             onBlur={saveEdit}
             onKeyDown={(e) => { if (e.key === 'Enter') saveEdit(); if (e.key === 'Escape') setEditing(false) }}
-            className="w-full bg-transparent outline-none text-sm text-gray-900 dark:text-gray-100 border-b border-indigo-400"
+            className="w-full bg-transparent outline-none text-base text-gray-900 dark:text-gray-100 border-b border-indigo-400"
           />
         ) : (
           <p
