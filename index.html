@@ -8,6 +8,20 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      function showError(msg) {
+        var el = document.createElement('div');
+        el.style.cssText = 'padding:20px;font-family:sans-serif;background:#fee2e2;color:#991b1b;position:fixed;top:0;left:0;right:0;z-index:9999;font-size:14px;word-break:break-all;';
+        el.innerHTML = '<strong>App Error (screenshot this):</strong><br>' + msg;
+        document.body.appendChild(el);
+      }
+      window.addEventListener('error', function(e) {
+        showError(e.message + ' @ ' + e.filename + ':' + e.lineno);
+      });
+      window.addEventListener('unhandledrejection', function(e) {
+        showError('Unhandled promise: ' + (e.reason && (e.reason.message || e.reason)));
+      });
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
