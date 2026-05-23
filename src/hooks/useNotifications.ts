@@ -1,17 +1,21 @@
 import { useEffect, useCallback } from 'react'
 import { useTaskStore } from '../store/taskStore'
 
+const hasNotificationAPI = typeof window !== 'undefined' && 'Notification' in window
+
 export function useNotifications() {
   const tasks = useTaskStore((s) => s.tasks)
 
   const requestPermission = useCallback(async () => {
-    if (!('Notification' in window)) return 'denied'
+    if (!hasNotificationAPI) return 'denied'
     if (Notification.permission === 'granted') return 'granted'
     return Notification.requestPermission()
   }, [])
 
   // Poll every minute to check for due reminders
   useEffect(() => {
+    if (!hasNotificationAPI) return
+
     const check = () => {
       if (Notification.permission !== 'granted') return
       const now = new Date()
@@ -33,7 +37,10 @@ export function useNotifications() {
     return () => clearInterval(interval)
   }, [tasks])
 
-  return { requestPermission, permission: typeof window !== 'undefined' ? Notification.permission : 'default' }
+  return {
+    requestPermission,
+    permission: hasNotificationAPI ? Notification.permission : 'denied',
+  }
 }
 
 function formatDate(iso: string) {
